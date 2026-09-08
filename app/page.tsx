@@ -14,10 +14,8 @@ import {
   Search,
   Sparkles
 } from "lucide-react";
-import { Suspense } from "react";
 import { Portrait } from "@/app/Portrait";
 import { ProjectDemoActions } from "@/app/ProjectDemoActions";
-import { ResumeSection } from "@/app/ResumeSection";
 import { site } from "@/data/site";
 
 const coverRibbonItems = [
@@ -251,10 +249,6 @@ export default function Home() {
         </div>
       </section>
 
-      <Suspense fallback={null}>
-        <ResumeSection profile={site.resumeProfile} />
-      </Suspense>
-
       <section id="focus" className="section-block focus-section">
         <div className="section-heading wide">
           <p className="editorial-label">Focus</p>
@@ -279,6 +273,28 @@ export default function Home() {
 
       <DimensionSection />
 
+      {/* 个人思考与沉淀 */}
+      <section id="reflections" className="section-block reflections-section">
+        <div className="section-heading wide">
+          <p className="editorial-label">Reflections</p>
+          <h2>一些关于招聘、AI 和工作的思考。</h2>
+          <p>
+            不只是做了什么，更是为什么这么做、做完之后想到了什么。这些思考是我所有项目背后的底层逻辑。
+          </p>
+        </div>
+
+        <div className="reflection-grid">
+          {site.reflections.map((reflection) => (
+            <article key={reflection.index} className="reflection-card">
+              <span className="reflection-card-index">{reflection.index} / Reflection</span>
+              <h3>{reflection.title}</h3>
+              <p>{reflection.body}</p>
+              <span className="reflection-card-tag">{reflection.tag}</span>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section id="ai-lab" className="section-block ai-section">
         <div className="section-heading wide">
           <p className="editorial-label">AI Experiments</p>
@@ -291,29 +307,32 @@ export default function Home() {
         <div className="project-list">
           {site.aiProjects.map((project) => (
             <article key={project.title} className="project-card">
-              <ProjectMedia type={project.mediaType} title={project.title} src={project.mediaSrc} poster={project.posterSrc} />
+              <a href={`/projects/${project.slug}`} className="project-card-link" aria-label={`查看 ${project.title} 详情`}>
+                <ProjectMedia type={project.mediaType} title={project.title} src={project.mediaSrc} poster={project.posterSrc} />
+              </a>
               <div className="project-copy">
                 <div className="project-copy-head">
                   <p className="project-issue">{project.issue}</p>
                   <span className="project-dimension">{project.dimension}</span>
                 </div>
-                <h3>{project.title}</h3>
+                <h3>
+                  <a href={`/projects/${project.slug}`}>{project.title}</a>
+                </h3>
                 <p>{project.summary}</p>
                 <div className="project-role">{project.role}</div>
-                {project.highlights ? (
-                  <ul className="project-highlights">
-                    {project.highlights.map((highlight) => (
-                      <li key={highlight}>{highlight}</li>
-                    ))}
-                  </ul>
-                ) : null}
                 <div className="tag-row">
                   {project.tags.map((tag) => (
                     <span key={tag}>{tag}</span>
                   ))}
                 </div>
                 {project.privacyNote ? <p className="project-note">{project.privacyNote}</p> : null}
-                <ProjectDemoActions project={project} />
+                <div className="project-card-actions">
+                  <a href={`/projects/${project.slug}`} className="view-detail-link">
+                    查看详情
+                    <MoveRight className="h-4 w-4" aria-hidden="true" />
+                  </a>
+                  <ProjectDemoActions project={project} />
+                </div>
               </div>
             </article>
           ))}
