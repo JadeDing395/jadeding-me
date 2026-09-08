@@ -1,0 +1,17 @@
+.next
+node_modules
+out
+dist
+.env*
+*.log
+.DS_Store
+tsconfig.tsbuildinfo
+preview-*.png
+tmp/
+
+# 敏感部署脚本（包含 AccessKey）
+*.py
+upload_to_oss*
+config_static_website*
+fix_oss_metadata*
+bind_cname*

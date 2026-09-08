@@ -1,0 +1,46 @@
+<svg width="1200" height="1500" viewBox="0 0 1200 1500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="1500" fill="#D9D9D3"/>
+  <path d="M0 0H1200V1500H0V0Z" fill="url(#grain)" opacity=".16"/>
+  <path d="M0 0H1200V1500H0V0Z" fill="url(#washBlue)" opacity=".46"/>
+  <path d="M0 0H1200V1500H0V0Z" fill="url(#washCoral)" opacity=".38"/>
+  <path d="M126 182H1074V1318H126V182Z" stroke="#161616" stroke-width="3"/>
+  <path d="M177 244H1023V1256H177V244Z" stroke="#F4F4F0" stroke-opacity=".64" stroke-width="2"/>
+  <path d="M352 1268C379 1047 462 920 600 920C738 920 821 1047 848 1268H352Z" fill="#171717"/>
+  <path d="M401 1257C427 1079 490 984 600 984C710 984 773 1079 799 1257H401Z" fill="#2A2A28"/>
+  <path d="M437 650C414 538 452 407 594 390C727 374 799 472 781 620C773 686 804 745 830 806C870 898 790 1004 600 1004C410 1004 330 898 370 806C394 752 453 727 437 650Z" fill="#1B1B1A"/>
+  <path d="M442 622C452 504 509 429 600 429C691 429 748 504 758 622L769 751C780 881 704 972 600 972C496 972 420 881 431 751L442 622Z" fill="#E8E1D8"/>
+  <path d="M445 626C459 508 515 440 600 440C685 440 741 508 755 626C709 595 666 579 600 579C534 579 491 595 445 626Z" fill="#20201E"/>
+  <path d="M438 605C460 480 523 405 616 405C725 405 792 491 797 641C741 600 680 579 602 579C537 579 481 588 438 605Z" fill="#151515"/>
+  <path d="M471 716C494 697 527 695 557 714" stroke="#161616" stroke-width="8" stroke-linecap="round"/>
+  <path d="M641 714C672 694 706 697 730 718" stroke="#161616" stroke-width="8" stroke-linecap="round"/>
+  <path d="M568 827C592 839 616 839 640 827" stroke="#161616" stroke-width="7" stroke-linecap="round"/>
+  <path d="M600 709C590 755 582 786 596 801" stroke="#161616" stroke-width="6" stroke-linecap="round"/>
+  <path d="M489 1005C520 1034 557 1050 600 1050C643 1050 680 1034 711 1005" stroke="#F4F4F0" stroke-opacity=".72" stroke-width="5"/>
+  <path d="M337 774C296 751 298 680 345 666C376 657 403 679 409 716C416 759 377 796 337 774Z" fill="#E8E1D8"/>
+  <path d="M863 774C904 751 902 680 855 666C824 657 797 679 791 716C784 759 823 796 863 774Z" fill="#E8E1D8"/>
+  <path d="M346 1087C432 1026 515 995 600 995C685 995 768 1026 854 1087" stroke="#F4F4F0" stroke-opacity=".4" stroke-width="2"/>
+  <path d="M271 288H533" stroke="#161616" stroke-width="2"/>
+  <path d="M271 325H461" stroke="#161616" stroke-opacity=".56" stroke-width="2"/>
+  <path d="M271 362H495" stroke="#161616" stroke-opacity=".34" stroke-width="2"/>
+  <path d="M728 1150H963" stroke="#B66F61" stroke-width="7"/>
+  <path d="M817 1178H963" stroke="#161616" stroke-opacity=".4" stroke-width="2"/>
+  <text x="271" y="1186" fill="#161616" font-family="Georgia, Times New Roman, serif" font-size="86" font-weight="700">JadeDing</text>
+  <text x="275" y="1235" fill="#66645F" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="800" letter-spacing="5">GAME ART HIRING</text>
+  <text x="878" y="323" fill="#161616" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="900" letter-spacing="4" transform="rotate(90 878 323)">AI EXPLORER</text>
+  <defs>
+    <radialGradient id="washBlue" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1020 216) rotate(136) scale(922 584)">
+      <stop stop-color="#687F89"/>
+      <stop offset="1" stop-color="#687F89" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="washCoral" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(238 1255) rotate(-52) scale(786 522)">
+      <stop stop-color="#B66F61"/>
+      <stop offset="1" stop-color="#B66F61" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" stitchTiles="stitch"/>
+    </filter>
+    <pattern id="grain" width="180" height="180" patternUnits="userSpaceOnUse">
+      <rect width="180" height="180" filter="url(#noise)" opacity=".34"/>
+    </pattern>
+  </defs>
+</svg>
