@@ -105,19 +105,33 @@ function TalentMapMedia() {
 }
 
 function DimensionSection() {
+  // 为每个维度找到对应的项目
+  const getProjectsByDimension = (dimensionTitle: string) => {
+    return site.aiProjects.filter((p) => p.dimension === dimensionTitle);
+  };
+
+  const scrollToProject = (slug: string) => {
+    // 先滚动到 AI Lab 板块
+    const aiLabSection = document.getElementById("ai-lab");
+    if (aiLabSection) {
+      aiLabSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section id="dimensions" className="section-block dimensions-section">
       <div className="section-heading wide">
         <p className="editorial-label">AI Dimensions</p>
         <h2>我对 AI 的探索，落在六个维度上。</h2>
         <p>
-          不是零散的工具尝试，而是有清晰脉络的持续探索。每个维度背后都有一套我自己的方法论和思考。
+          不是零散的工具尝试，而是有清晰脉络的持续探索。每个维度背后都有一套我自己的方法论和思考，也对应着具体的项目实践。
         </p>
       </div>
 
       <div className="dimension-grid">
         {site.aiDimensions.map((dim) => {
           const Icon = dim.icon;
+          const dimensionProjects = getProjectsByDimension(dim.title);
           return (
             <article key={dim.index} className="dimension-card">
               <div className="dimension-card-head">
@@ -134,6 +148,23 @@ function DimensionSection() {
                   <span key={tag}>{tag}</span>
                 ))}
               </div>
+              {dimensionProjects.length > 0 && (
+                <div className="dimension-projects">
+                  <p className="dimension-projects-label">相关项目</p>
+                  <div className="dimension-project-links">
+                    {dimensionProjects.map((project) => (
+                      <a
+                        key={project.slug}
+                        href={`/projects/${project.slug}`}
+                        className="dimension-project-link"
+                      >
+                        {project.title.split("·")[0].trim()}
+                        <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
             </article>
           );
         })}
@@ -249,6 +280,25 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 简洁工作经历 */}
+      <section id="experience" className="section-block experience-section">
+        <div className="section-heading">
+          <p className="editorial-label">Experience</p>
+          <h2>工作经历</h2>
+        </div>
+        <div className="experience-list">
+          {site.experienceItems.map((item) => (
+            <article key={item.period} className="experience-item">
+              <div className="experience-period">{item.period}</div>
+              <div className="experience-content">
+                <h3>{item.place}</h3>
+                <p className="experience-title">{item.title}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section id="focus" className="section-block focus-section">
         <div className="section-heading wide">
           <p className="editorial-label">Focus</p>
@@ -278,9 +328,6 @@ export default function Home() {
         <div className="section-heading wide">
           <p className="editorial-label">Reflections</p>
           <h2>一些关于招聘、AI 和工作的思考。</h2>
-          <p>
-            不只是做了什么，更是为什么这么做、做完之后想到了什么。这些思考是我所有项目背后的底层逻辑。
-          </p>
         </div>
 
         <div className="reflection-grid">
