@@ -130,7 +130,7 @@ export const site = {
   },
   navLinks: [
     { label: "About", href: "#about" },
-    { label: "Experience", href: "#experience" },
+    { label: "Resume", href: "#resume" },
     { label: "Focus", href: "#focus" },
     { label: "AI Dimensions", href: "#dimensions" },
     { label: "Reflections", href: "#reflections" },

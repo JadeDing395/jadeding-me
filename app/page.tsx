@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { Portrait } from "@/app/Portrait";
 import { ProjectDemoActions } from "@/app/ProjectDemoActions";
+import { ResumeSection } from "@/app/ResumeSection";
 import { site } from "@/data/site";
 
 const coverRibbonItems = [
@@ -155,7 +156,7 @@ function DimensionSection() {
                     {dimensionProjects.map((project) => (
                       <a
                         key={project.slug}
-                        href={`/projects/${project.slug}`}
+                        href={`#project-${project.slug}`}
                         className="dimension-project-link"
                       >
                         {project.title.split("·")[0].trim()}
@@ -280,24 +281,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 简洁工作经历 */}
-      <section id="experience" className="section-block experience-section">
-        <div className="section-heading">
-          <p className="editorial-label">Experience</p>
-          <h2>工作经历</h2>
-        </div>
-        <div className="experience-list">
-          {site.experienceItems.map((item) => (
-            <article key={item.period} className="experience-item">
-              <div className="experience-period">{item.period}</div>
-              <div className="experience-content">
-                <h3>{item.place}</h3>
-                <p className="experience-title">{item.title}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+      <ResumeSection profile={site.resumeProfile} />
 
       <section id="focus" className="section-block focus-section">
         <div className="section-heading wide">
@@ -353,7 +337,7 @@ export default function Home() {
 
         <div className="project-list">
           {site.aiProjects.map((project) => (
-            <article key={project.title} className="project-card">
+            <article key={project.title} id={`project-${project.slug}`} className="project-card">
               <a href={`/projects/${project.slug}`} className="project-card-link" aria-label={`查看 ${project.title} 详情`}>
                 <ProjectMedia type={project.mediaType} title={project.title} src={project.mediaSrc} poster={project.posterSrc} />
               </a>

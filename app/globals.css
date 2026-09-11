@@ -2462,6 +2462,16 @@ body.modal-open {
   }
 }
 
+/* ===== Resume No Education Layout ===== */
+
+.resume-layout-no-education {
+  grid-template-columns: 1fr;
+}
+
+.resume-layout-no-education .resume-work-list {
+  max-width: 100%;
+}
+
 /* ===== Experience Section ===== */
 
 .experience-section {
