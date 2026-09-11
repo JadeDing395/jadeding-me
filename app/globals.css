@@ -2071,6 +2071,24 @@ body.modal-open {
   flex-shrink: 0;
 }
 
+.project-dimension-link {
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.project-dimension-link:hover {
+  background: var(--accent);
+  color: var(--paper);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+/* 平滑滚动 */
+html {
+  scroll-behavior: smooth;
+}
+
 /* ===== Project Card Extra Colors (5-7) ===== */
 
 .project-card:nth-child(5) { background: #ece8f4; }

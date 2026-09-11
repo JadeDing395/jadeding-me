@@ -134,7 +134,7 @@ function DimensionSection() {
           const Icon = dim.icon;
           const dimensionProjects = getProjectsByDimension(dim.title);
           return (
-            <article key={dim.index} className="dimension-card">
+            <article key={dim.index} id={`dimension-${dim.index}`} className="dimension-card">
               <div className="dimension-card-head">
                 <span className="dimension-index">{dim.index}</span>
                 <div className="dimension-icon">
@@ -336,7 +336,11 @@ export default function Home() {
         </div>
 
         <div className="project-list">
-          {site.aiProjects.map((project) => (
+          {site.aiProjects.map((project) => {
+            // 找到对应的维度 index，用于回退链接
+            const matchedDim = site.aiDimensions.find((d) => d.title === project.dimension);
+            const dimIndex = matchedDim ? matchedDim.index : null;
+            return (
             <article key={project.title} id={`project-${project.slug}`} className="project-card">
               <a href={`/projects/${project.slug}`} className="project-card-link" aria-label={`查看 ${project.title} 详情`}>
                 <ProjectMedia type={project.mediaType} title={project.title} src={project.mediaSrc} poster={project.posterSrc} />
@@ -344,7 +348,13 @@ export default function Home() {
               <div className="project-copy">
                 <div className="project-copy-head">
                   <p className="project-issue">{project.issue}</p>
-                  <span className="project-dimension">{project.dimension}</span>
+                  {dimIndex ? (
+                    <a href={`#dimension-${dimIndex}`} className="project-dimension project-dimension-link" title="回到对应维度">
+                      {project.dimension}
+                    </a>
+                  ) : (
+                    <span className="project-dimension">{project.dimension}</span>
+                  )}
                 </div>
                 <h3>
                   <a href={`/projects/${project.slug}`}>{project.title}</a>
@@ -366,7 +376,8 @@ export default function Home() {
                 </div>
               </div>
             </article>
-          ))}
+            );
+          })}
         </div>
       </section>
 
